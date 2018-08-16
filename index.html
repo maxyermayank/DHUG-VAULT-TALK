@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Credential Store - Vault</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/white.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<a href="https://www.vaultproject.io/" target="_blank">
+					<img data-src="images/Vault.png" alt="Vault Logo" height="250">
+				</a>
+				<h2>Credential Store</h2>
+			</section>
+			<section>
+				<h2>Mayank Patel</h2>
+				<h4>Application Architect @ <a href="https://www.oildex.com" target="_blank">Oildex</a></h4>
+				<p>
+					<small>
+						<a href="https://www.linkedin.com/in/mayank-patel-b9141210/" target="_blank">Linkedin</a> /
+						<a href="https://twitter.com/maxy_ermayank" target="_blank">@maxy_ermayank</a> /
+						<a href="https://medium.com/@maxy_ermayank" target="_blank">Medium</a>
+					</small>
+				</p>
+			</section>
+
+			<section>
+				<h2><a href="https://www.oildex.com" target="_blank">Oildex</a></h2>
+				<h5>Software as a Service Provider for Oil and Gas companies</h5>
+				<ul>
+					<li>7.5 Years</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Focused on</h2>
+				<ul>
+					<li>Streaming, Reactive, Non-blocking Architecture</li>
+					<li>API Design</li>
+					<li>DevOps</li>
+					<li>Cloud Native Architecture</li>
+					<li>Empowering software development teams</li>
+					<li>Digital Transformation and Digital Optimization</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Agenda</h2>
+				<ul>
+					<li>Common Challenges</li>
+					<li>Vault Use Cases & Features</li>
+					<li>Demo</li>
+				</ul>
+			</section>
+			<section>
+				<section>
+					<h2>Common Challenges / Problems we are trying to solve?</h2>
+				</section>
+				<section>
+					<h2>Credentials stored & transmitted in Plaintext format</h2>
+				</section>
+				<section>
+					<h2>Credentials almost never get renewed once it is issued or manual renewal</h2>
+				</section>
+				<section>
+					<h2>No PKI Certificate Management</h2>
+				</section>
+				<section>
+					<h2>API Keys are hand generated and never renewed</h2>
+				</section>
+				<section>
+					<h2>No SSH Key storage</h2>
+				</section>
+				<section>
+					<h2>No Audit Control</h2>
+				</section>
+				<section>
+					<h2>No Kill Switch</h2>
+				</section>
+				<section>
+					<h2>Lack of automation for secrets deployment</h2>
+				</section>
+				<section>
+					<h2>MANY MORE...</h2>
+				</section>
+			</section>
+			<section>
+				<h2>How do we manage credentials in Cloud Native, Distributed Infrastructure ?</h2>
+			</section>
+			
+			<section>
+				<img src="https://static1.squarespace.com/static/5438500ae4b078d0a8c7c708/t/5a333bb9e4966b79a06120ba/1513307253144/OlegFrolov_swiss-knife.gif"
+				/>
+			</section>
+			<section>
+				<h2>Vault Use Cases</h2>
+				<img data-src="images/VaultUseCases.png" alt="Vault Use Cases">
+			</section>
+			<section><h2>Secure Credential Management on a Budget</h2></section>
+			<section>
+				<h2>Vault Features</h2>
+				<ul>
+					<li>Secure Secret Storage</li>
+					<li>Dynamic Secrets (Secret as a Service)</li>
+					<li>Data Encryption</li>
+					<li>Leasing and Renewal (Key Rotation)</li>
+					<li>Revocation</li>
+					<li>Audit Control</li>
+					<li>Integration with wide variety of Databases and Tools</li>
+					<li>Custom Plugin</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Secure Secret Storage</h2>
+				<ul>
+					<li>Basic Credentials</li>
+					<li>Tokens, TOTP</li>
+					<li>PKI Certificate Management (It’s easy to be your own certificate authority)</li>
+					<li>LDAP</li>
+					<li>
+						<ul>SSH Keys
+							<li>Handle SSH logins across the org.</li>
+							<li>One time SSH access</li>
+							<li>It increases the usefulness of audit logs during incident response</li>
+						</ul>
+					</li>
+					<li>...</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Dynamic Secrets</h2>
+				<table>
+					<tr>
+						<td>AWS</td>
+						<td>Cassandra</td>
+						<td>Consul</td>
+						<td>Hana</td>
+					</tr>
+					<tr>
+						<td>MariaDB</td>
+						<td>MongoDB</td>
+						<td>MSSQL</td>
+						<td>MySQL</td>
+					</tr>
+					<tr>
+						<td>Oracle</td>
+						<td colspan="2">PKI Certificates</td>
+						<td>PostgreSQL</td>
+					</tr>
+					<tr>
+						<td>RabbitMQ</td>
+						<td>SSH</td>
+						<td>Transit</td>
+						<td>Custom..</td>
+					</tr>
+				</table>
+			</section>
+			<section>
+				<section>
+					<h2>Why Dynamic Secrets?</h2>
+					<p>Dynamic passwords provide a bunch of benefits</p>
+				</section>
+				<section><h2>No need to write down, store, or share passwords</h2></section>
+				<section><h2>Enables very short lived passwords, less exposure if compromised</h2></section>
+				<section><h2>For distributed applications, every instance gets unique credentials</h2></section>
+				<section><h2>Constantly changing and expiring usernames/passwords are much harder to brute force</h2></section>
+				<section><h2>Automatic password rotation/expiration</h2></section>
+				<section><h2>Better audit trail</h2></section>
+			</section>
+			<section>
+				<h2>HTTP API/CLI</h2>
+			</section>
+
+			<section>
+				<h2>Integration</h2>
+				<ul>
+					<li>consul-template</li>
+					<li>Envconsul</li>
+					<li><a href="https://plugins.jenkins.io/hashicorp-vault-plugin" target="_blank">HashiCorp Vault Jenkins plugin</a></li>
+					<li>Native Client Libraries</li>
+					<li>Integration with Ansible, Chef, Puppet, Salt, etc.</li>
+				</ul>
+			</section>
+			<section>
+				<img data-src="images/bestpractices.png" alt="Vault Best Practices">
+			</section>
+			<section>
+				<h2>Resources</h2>
+				<ul>
+					<li><a href="https://github.com/maxyermayank/vault-consul-swarm-cluster" target="_blank">Vault-Consul Docker Swarm Cluster</a></li>
+					<li><a href="https://maxyermayank.github.io/DHUG-VAULT-TALK/" target="_blank">Denver HashiCorp User Group Talk - Credential
+							Store using Vault</a></li>
+					<li><a href="https://github.com/gites/awesome-vault-tools" target="_blank">awesome-vault-tools</a></li>
+					<li><a href="https://www.vaultproject.io/#/demo/0" target="_blank">Vault Demo Console</a></li>
+				</ul>
+			</section>
+			<section style="text-align: left;">
+				<h1>Thank You!</h1>
+				<h3>Questions?</h3>
+				<small>
+					<p>You can contact me at: </p>
+					<p>
+						<a href="https://www.linkedin.com/in/mayank-patel-b9141210/" target="_blank">Linkedin</a> /
+						<a href="https://twitter.com/maxy_ermayank" target="_blank">@maxy_ermayank</a> /
+						<a href="https://medium.com/@maxy_ermayank" target="_blank">Medium</a>
+					</p>
+				</small>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
